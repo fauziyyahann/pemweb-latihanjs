@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Latihan 1 JavaScript</title>
+</head>
+
+<body bgcolor=" #F5F5F5">
+    <h3 style="color: #30475E;">Fauziyyah Annisah</h3>
+    <h3 style="color: #30475E;">Teknik Informatika-09</h3>
+    <h3 style="color: #30475E;">0110221224</h3>
+
+    <hr>
+    <h3 style="color: #F05454">Menghitung Luas dan Keliling Lingkaran</h3>
+<form action="">
+        <div class="">
+            <input type="number" placeholder="Masukkan Nilai Jari-Jari" id="Jari2" value="">
+            <br><br>
+            <input type="number" placeholder="Hasilnya adalah..." id="hasil" value="">
+            <br><br>
+        </div>
+    
+    <button type="button" onclick="Luas()">Luas</button>
+    <button type="button" onclick="Keliling()">Keliling</button>
+    <button type="reset" value="reset">Reset</button>
+</form>
+<br>
+<hr>
+
+<h3 style="color:#F05454;">Kurs Mata Uang</h3>
+1$ = Rp 14.650
+<table border="2" cellspacing="0" cellpadding="2">
+    <tr style="text-align: center;">
+        <td>IDR</td>
+        <td>Dollar</td>
+        <td>Konversi IDR ke Dollar</td>
+    </tr>
+    <tr>
+        <td>Rp<input type="number" name="" id="idr" value=""></td>
+        <td><button onclick="Convert()">Convert</button></td>
+        <td id="hasilKurs"></td>
+    </tr>
+</table>
+<br>
+<br>
+<hr>
+
+<h3 style="color: #F05454;">Biaya Parkir</h3>
+<table class="cost">
+    <tr>
+        <th>Jam Masuk</th>
+        <th>Jam Keluar</th>
+        <th>Lama Parkir</th>
+        <th>Biaya</th>
+    </tr>
+    <tr>
+        <td><input type="number" placeholder="Jam Masuk" id="masuk" onchange="hitung()"></td>
+        <td><input type="number" placeholder="Jam Keluar" id="keluar" onchange="hitung()"></td>
+        <td><input type="text" placeholder="Lamanya" id="lama"></td>
+        <td><input type="text" placeholder="Biaya Parkir" id="Biaya"></td>
+    </tr>
+</table>
+<br>
+<br>
+<hr>
+
+<h3 style="color: #F05454;">Penjumlahan</h3>
+<input type="text" value="0" id="bil1" onchange="hitung()"> + <input type="text" value="0" id="bil2" onchange="hitung()"> = <input type="text" value="0" id="bil3">
+<br><br>
+    <script>
+
+    //lingkaran
+        let Jari2 = document.getElementById("Jari2");
+        let diameter = document.getElementById("diameter");
+        let hasil = document.getElementById("hasil");
+
+        function Luas() {
+            let Luas = 3.14 * Jari2.value * Jari2.value
+            hasil.value = Luas
+        }
+
+        function Keliling() {
+            let diameter = 2 * Jari2.value
+            let Keliling = 3.14 * diameter
+            hasil.value = Keliling
+        }
+
+
+    //convert
+        function Convert() {
+            const dollar = 1 / 14650;
+            console.log(dollar);
+            let idr = document.getElementById("idr").value;
+            console.log(idr);
+            let konversi = idr * dollar;
+            console.log(konversi);
+            let hasil_konv = document.getElementById("hasilKurs");
+            hasil_konv.innerHTML = konversi + "$";
+        }
+
+    //parkir
+        function hitung(){
+            let nf = new Intl.NumberFormat("id-ID")
+            let jamMasuk = document.getElementById("masuk").value;
+            let jamKeluar = document.getElementById("keluar").value;
+            let lama = jamKeluar - jamMasuk;
+            document.getElementById("lama").value = lama + " Jam";
+
+             if (Lama == 2){
+                 let cost = document.getElementById("Biaya");
+                 cost.value = "Rp. " + nf.format(3000);
+             }else if (Lama > 2){
+                 let Biaya = document.getElementById("Biaya");
+                 Biaya.value = "Rp. " + nf.format(((Lama - 2)*1000) + 3000);
+             }
+        } 
+        
+    //penjumlahan
+        function hitung() {
+            let bil1 = Number(document.getElementById("bil1").value);
+            let bil2 = Number(document.getElementById("bil2").value);
+            let bil3 = bil1 + bil2;
+            document.getElementById("bil3").value = bil3;
+        }
+
+    </script>
+</body>
+</html>
